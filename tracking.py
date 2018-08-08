@@ -4,8 +4,14 @@ import numpy as np
 # TODO: fix warning
 # make friendly comments to user when input / output files can't be open
 # 
+file_name = 'smple tracking.xlsx'
 
-data = pd.read_excel('smple tracking.xlsx')
+try:
+    data = pd.read_excel(file_name)
+except FileNotFoundError:
+    print(f"Could not open file {file_name}.\n"
+            "Make sure it is located in the same directory as the script.")
+    exit() 
 #print(data[0:7])
 #print(data['Customer Email'])
 #data = data.rename(index=str, columns={'To Name':'Name', 
@@ -40,4 +46,11 @@ merged = merged.rename(index=str, columns={'To Name':'Name',
 
 merged.set_index('Name', inplace=True)
 #print(merged)
-merged.to_csv('merged_tracking.csv')
+out_file_name = 'merged_tracking.csv'
+try:
+    merged.to_csv(out_file_name)
+    print(f"Output written to file {out_file_name}")
+except PermissionError:
+    print(f"Could not open file {out_file_name} for writing.\n"
+            "Check if it is open already.")
+    exit()
