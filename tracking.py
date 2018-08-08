@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 
+# TODO: fix warning
+# make friendly comments to user when input / output files can't be open
+# 
+
 data = pd.read_excel('smple tracking.xlsx')
 #print(data[0:7])
 #print(data['Customer Email'])
