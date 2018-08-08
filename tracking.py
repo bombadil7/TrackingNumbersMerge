@@ -16,14 +16,9 @@ data = data.reindex(columns = data.columns.tolist() + new_headers)
 merged = data.iloc[[0]]
 all_orders = data.loc[data['Customer Email'] == merged.loc[0, 'Customer Email']]
 
-# Create additional columns for tracking numbers
-#new_headers = [f'Tracking Number {i}' for i in range(2, 8)]
-#merged = merged.reindex(columns = merged.columns.tolist() + new_headers)
-
 # Insert additional tracking numbers for the first customer
 for i, number in enumerate(all_orders.loc[1:,'Tracking Number']):
     merged.iloc[0, i+3] = number
-
 
 for index, order in data.iterrows():
     email = order['Customer Email']
@@ -40,5 +35,5 @@ merged = merged.rename(index=str, columns={'To Name':'Name',
                                     })
 
 merged.set_index('Name', inplace=True)
-print(merged)
+#print(merged)
 merged.to_csv('merged_tracking.csv')
