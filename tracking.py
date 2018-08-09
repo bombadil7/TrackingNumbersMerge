@@ -4,6 +4,8 @@ import numpy as np
 # TODO: fix warning
 # make friendly comments to user when input / output files can't be open
 # delete extra columns 
+# add file name as an optional argument
+# try renaming the original frame columns
 
 file_name = 'smple tracking.xlsx'
 
