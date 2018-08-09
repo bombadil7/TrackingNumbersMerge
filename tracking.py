@@ -19,12 +19,7 @@ except FileNotFoundError:
     print(f"Could not open file {file_name}.\n"
             "Make sure it is located in the same directory as the script.")
     exit() 
-#print(data[0:7])
-#print(data['Customer Email'])
-#data = data.rename(index=str, columns={'To Name':'Name', 
-#                                    'Customer Email':'Email',
-#                                    'Tracking Number':'Tracking Number 1',
-#                                    })
+
 data.dropna(axis='columns', how='all', inplace=True)
 # Create additional columns for tracking numbers
 new_headers = [f'Tracking Number {i}' for i in range(2, 10)]
