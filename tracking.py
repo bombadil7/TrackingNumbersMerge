@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import sys
 
 # TODO: fix warning
 # make friendly comments to user when input / output files can't be open
@@ -9,6 +10,9 @@ import numpy as np
 
 file_name = 'smple tracking.xlsx'
 
+if len(sys.argv) == 2:
+    file_name = sys.argv[1]
+#def merge_track_numbers
 try:
     data = pd.read_excel(file_name)
 except FileNotFoundError:
