@@ -20,7 +20,7 @@ except FileNotFoundError:
 #                                    'Tracking Number':'Tracking Number 1',
 #                                    })
 # Create additional columns for tracking numbers
-new_headers = [f'Tracking Number {i}' for i in range(2, 8)]
+new_headers = [f'Tracking Number {i}' for i in range(2, 10)]
 data = data.reindex(columns = data.columns.tolist() + new_headers)
 
 # Create merged dataframe by adding the first customer
@@ -47,7 +47,8 @@ merged = merged.rename(index=str, columns={'To Name':'Name',
                                     })
 
 merged.set_index('Name', inplace=True)
-print(merged)
+merged.dropna(axis='columns', how='all', inplace=True)
+#print(merged)
 out_file_name = 'merged_tracking.csv'
 try:
     merged.to_csv(out_file_name)
