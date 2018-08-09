@@ -21,6 +21,7 @@ except FileNotFoundError:
 #                                    'Customer Email':'Email',
 #                                    'Tracking Number':'Tracking Number 1',
 #                                    })
+data.dropna(axis='columns', how='all', inplace=True)
 # Create additional columns for tracking numbers
 new_headers = [f'Tracking Number {i}' for i in range(2, 10)]
 data = data.reindex(columns = data.columns.tolist() + new_headers)
