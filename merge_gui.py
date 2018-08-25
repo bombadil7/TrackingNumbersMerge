@@ -49,7 +49,15 @@ class Merger:
         def copyFile():
             import shutil
             src = self.fileEntry.get()
-            print('hello from copyFile')
+            # print('hello from copyFile')
+            if len(src.split('/')) > 2:  # lin
+                file = src.split('/')[-1]
+                dst = self.netwEntry.get() + '/' + file
+            else:   # win
+                file = src.split("\\")[-1]
+                dst = self.netwEntry.get() + '\\' + file
+
+            print(dst)
 
         cb = ttk.Button(selFilesFrame, text="Copy File To: ",
                         command=copyFile)
