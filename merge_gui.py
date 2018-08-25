@@ -1,5 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
+from os import path
+from tkinter import filedialog as fd
+
+fDir = path.dirname(path.abspath(__file__))
+#netDir = fDir + '\\Backup'
 
 
 class Merger:
@@ -17,6 +22,12 @@ class Merger:
 
         def getFileName():
             print('hello from getFileName')
+            fName = fd.askopenfilename(parent=self.win,
+                                       initialdir=fDir)
+            print("fName: " + fName)
+            self.fileEntry.delete(0, tk.END)
+            self.fileEntry.insert(0, fName)
+            self.fileEntry.config(width=len(fName) + 3)
 
         lb = ttk.Button(selFilesFrame,
                         text="Browse to File...",
